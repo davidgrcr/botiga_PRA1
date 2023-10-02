@@ -1,0 +1,14 @@
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+}
+  
+footer {
+    position: fixed; 
+    bottom: 10px;
+    text-align: center;
+    left: calc(50% - 50px);
+}
