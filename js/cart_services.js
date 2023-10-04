@@ -3,14 +3,16 @@ const CART_SERVICES_URL = 'http://localhost/api/cart/';
 const GET_PRODUCTS_FROM_CART_URL = CART_SERVICES_URL + 'getProducts.php';
 const ADD_TO_CART_URL = CART_SERVICES_URL + 'addProduct.php';
 const REMOVE_PRODUCT_FROM_CART_URL = CART_SERVICES_URL + 'removeProduct.php';
+const UPDATE_PRODUCT_QUANTITY_URL = CART_SERVICES_URL + 'updateProductQuantity.php';
 
-function fetchFromCart(url, method, body = null) {
+function fetchFromCart(url, method, body = null, signal = null) {
     return fetch(url, {
         method: method,
         headers: {
             'Content-Type': 'application/json'
         },
-        body: body ? JSON.stringify(body) : null
+        body: body ? JSON.stringify(body) : null,
+        signal: signal
     })
     .then(response => response.json())
     .then(data => data)
@@ -19,8 +21,8 @@ function fetchFromCart(url, method, body = null) {
     });
 }
 
-function getProductsFormCart() {
-    return fetchFromCart(GET_PRODUCTS_FROM_CART_URL, 'GET');
+function getProductsFormCart(signal) {
+    return fetchFromCart(GET_PRODUCTS_FROM_CART_URL, 'GET', null, signal);
 }
 
 function addToCart(productId, quantity) {
@@ -29,4 +31,8 @@ function addToCart(productId, quantity) {
 
 function removeProductFromCart(productId) {
     return fetchFromCart(REMOVE_PRODUCT_FROM_CART_URL, 'POST', { product_id: productId });
+}
+
+function updateProductQuantity(productId, quantity, signal) {
+    return fetchFromCart(UPDATE_PRODUCT_QUANTITY_URL, 'POST', { product_id: productId, quantity:+quantity }, signal);
 }

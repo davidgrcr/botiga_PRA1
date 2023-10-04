@@ -57,14 +57,28 @@ $categories = CategoryDAO::getAllCategories();
 
 <script>
     const cart = document.querySelector('#cart');
+    let abortController = new AbortController(); // Inicializa el AbortController
+    let isFetching = false;
 
     const updateCart = () => {
-        getProductsFormCart().then(data => {
+        if (isFetching) {
+            abortController.abort();
+            // Creamos un nuevo AbortController para la próxima petición
+            abortController = new AbortController();
+        }
+
+        isFetching = true; // Indicamos que una petición está en curso
+
+        const getProductsFormCartSignal = abortController.signal; // Obtenemos la señal del nuevo AbortController
+
+        getProductsFormCart(getProductsFormCartSignal).then(data => {
             let numberOfProducts = 0;
             Object.values(data?.products || []).forEach(product => {
                 numberOfProducts += product;
             });
             cart.innerHTML = numberOfProducts;
+        }).finally(() => {
+            isFetching = false; // Indicamos que la petición ha finalizado
         });
     }
 

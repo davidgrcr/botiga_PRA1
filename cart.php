@@ -28,10 +28,10 @@ ob_start();
                     <a href="product.php?product_id= <?php echo $product->getId() ?>"><?php echo  $product->getName()  ?></a>
                 </td>
                 <td class="product-quantity">
-                    <input type="number" value="<?php echo $quantity; ?>" min="1" max="10">
+                    <input type="number" value="<?php echo $quantity; ?>" min="1" max="10" data-product-id="<?php echo $product->getId(); ?>">
                 </td>
                 <td class="product-remove">
-                    <button class="link" data-product-id="<?php echo $product->getId(); ?>">(X) Delete</button>
+                    <button class="link remove_product" data-product-id="<?php echo $product->getId(); ?>">(X) Delete</button>
                 </td>
             </tr>
         <?php endforeach; ?>
@@ -43,7 +43,6 @@ ob_start();
 // Almacenar el contenido en la variable $content y limpiar el búfer
 $content = ob_get_clean();
 
-// echo $content;
 ob_start(); // Inicia la captura de salida
 include 'layout.php'; 
 $layout = ob_get_clean(); // Guarda la salida en una variable y termina la captura
@@ -56,6 +55,27 @@ echo $layout;
             e.stopPropagation();
             removeProductFromCart(e.target.dataset.productId).then(() => {
                 window.location.reload();
+            });
+        });
+    });
+    
+    const controllers = {};
+
+    document.querySelectorAll('.product-quantity input').forEach(input => {
+        input.addEventListener('input', function() {
+            const productId = this.dataset.productId;
+
+            // Si ya hay un controlador para este producto, aborta la petición
+            if (controllers[productId]) {
+                controllers[productId].abort();
+            }
+
+            // Crea un nuevo AbortController para este producto
+            controllers[productId] = new AbortController();
+            const signal = controllers[productId].signal;
+
+            updateProductQuantity(productId, this.value, signal).then(() => {
+                window.dispatchEvent(new Event('cart-updated'));
             });
         });
     });
