@@ -11,28 +11,33 @@ if (!isset($_SESSION['cart'])) {
 
 ob_start();
 ?>
-<div class="cart-container">
-    <div class="cart-header">
-        <div class="product-info">Producto</div>
-        <div class="product-quantity">Cantidad</div>
-        <div class="product-remove">Eliminar</div>
-    </div>
-    <?php foreach ($_SESSION['cart'] as $productId => $quantity): ?>
-        <?php $product = ProductDAO::getProductById($productId); ?>
-        <div class="cart-item">
-            <div class="product-info">
-                <img src="img/products/<?php echo $product->getImage(); ?>" alt="<?php echo $product->getName(); ?>">
-                <?php echo $product->getName(); ?>
-            </div>
-            <div class="product-quantity">
-                <input type="number" value="<?php echo $quantity; ?>" min="1">
-            </div>
-            <div class="product-remove">
-                <button class="remove_product" data-product-id="<?php echo $product->getId(); ?>">Eliminar</button>
-            </div>
-        </div>
-    <?php endforeach; ?>
-</div>
+<table class="cart-container">
+    <thead>
+        <tr class="cart-header">
+            <th class="product-info">Product</th>
+            <th class="product-quantity">Quantity</th>
+            <th class="product-remove">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($_SESSION['cart'] as $productId => $quantity): ?>
+            <?php $product = ProductDAO::getProductById($productId); ?>
+            <tr class="cart-item">
+                <td class="product-info">
+                    <img src="img/products/<?php echo $product->getImage(); ?>" alt="<?php echo $product->getName(); ?>">
+                    <a href="product.php?product_id= <?php echo $product->getId() ?>"><?php echo  $product->getName()  ?></a>
+                </td>
+                <td class="product-quantity">
+                    <input type="number" value="<?php echo $quantity; ?>" min="1" max="10">
+                </td>
+                <td class="product-remove">
+                    <button class="link" data-product-id="<?php echo $product->getId(); ?>">(X) Delete</button>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+
 <?php
 
 // Almacenar el contenido en la variable $content y limpiar el búfer
@@ -58,26 +63,31 @@ echo $layout;
 
 <style>
 .cart-container {
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    margin: 0 auto;
+  width: 80%;
+  border-collapse: collapse;
+  margin : 0 auto;
 }
 
-.cart-header,
-.cart-item {
-    display: flex;
-    justify-content: space-between;
+.cart-container th,
+.cart-container td {
+  text-align: left;
+  padding: 8px;
 }
 
-.product-info,
-.product-quantity,
-.product-remove {
-    flex-basis: 33.33%;
+.cart-container .product-info {
+  width: 50%;
+}
+
+.cart-container .product-info span {
+  text-transform: capitalize;
 }
 
 .product-info img {
-    max-width: 50px;
-    margin-right: 10px;
+  max-width: 50px;
+  vertical-align: middle;
 }
-</sytle>
+
+.product-info span {
+  vertical-align: middle;
+}
+</style>

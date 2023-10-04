@@ -4,11 +4,11 @@ include_once 'model/ProductDAO.php';
 
 $product = ProductDAO::getProductById($_GET['product_id']);
 $content = "<article class='product_page'><header>";
-$content .= "<h1>" . $product->getName() . "</h1>";
 $content .= "</header><section class='product'>";
 $content .= "<figure><img src='img/products/" . $product->getImage() . "' alt='" . $product->getName() . "'></figure>";
-$content .= "<div><p>" . $product->getDescription() . "</p>";
-$content .= "<p>Price: $" . $product->getPrice() . "</p>";
+$content .= "<div>";
+$content .= "<h1>" . $product->getName() . "</h1>";
+$content .= "<p>" . $product->getDescription() . "</p>";
 $content .= "<button class='add_product' data-product-id='". $product->getId() . "'. >Add to cart</button>";
 $content .= "</div></section></article>";
 
@@ -29,25 +29,12 @@ echo $layout;
 </script>
 
 <style>
-    .product_page {
-    display: flex;
-    margin: 0 auto;
-    flex-direction: column;
-    gap: 25px;
-    text-align: left;
-    list-style: none;
-    max-width: 50%;
-}
-
-.product_page h1 {
-    text-transform: uppercase;
-}
-
 .product_page .product {
     display: flex;
     gap: 20px;
     list-style: none;
     align-items: center;
+    text-wrap: balance;
 }
 
 .product_page  img {

@@ -25,20 +25,6 @@ $products = ProductDAO::getProductsByCategoryId($_GET['category_id']);
 ?>
 
 <style>
-    .category_page {
-    display: flex;
-    margin: 0 auto;
-    flex-direction: column;
-    gap: 25px;
-    text-align: left;
-    list-style: none;
-    max-width: 50%;
-}
-
-.category_page h1 {
-    text-transform: uppercase;
-}
-
 .category_page .products {
     list-style: none;
     display: flex;
@@ -53,10 +39,5 @@ $products = ProductDAO::getProductsByCategoryId($_GET['category_id']);
     list-style: none;
     align-items: center;
     min-width: 500px;
-}
-
-.category_page .products img {
-    width: 150px;
-    aspect-ratio: auto 1 / 1;
 }
 </style>

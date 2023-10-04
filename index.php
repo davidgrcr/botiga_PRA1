@@ -24,7 +24,8 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	width: 100%;
+	width: 50%;
+	margin: 0 auto;
 }
 .landing .card {
 	display: flex;
@@ -32,9 +33,6 @@
 	justify-content: center;
 	width: 100%;
 	gap: 50px;
-}
-.landing img {
-	width: 150px;
-  	aspect-ratio: auto 1 / 1;
+	text-transform: capitalize;
 }
 </style>

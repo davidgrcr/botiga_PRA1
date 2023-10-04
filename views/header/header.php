@@ -31,6 +31,15 @@ $categories = CategoryDAO::getAllCategories();
 .header a {
     text-transform: uppercase;
 }
+.header nav a {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.header nav a:hover {
+    background-color: black;
+    color: white;
+}
 
 .header ul {
     display: flex;

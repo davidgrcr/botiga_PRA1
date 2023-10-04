@@ -30,7 +30,7 @@
 
 <footer>
     <!-- contenido del pie de página -->
-	<a href="admin.php">Admin</a>
+	<a class="link" href="admin.php">Admin</a>
 </footer>
 
 </body>
