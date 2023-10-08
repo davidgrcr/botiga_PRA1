@@ -1,5 +1,5 @@
 <?php
-include_once './../../../db/Database.php';
+include_once './../../db/Database.php';
 include_once './Order.php';
 
 class OrderDAO {
@@ -43,45 +43,65 @@ class OrderDAO {
 
     public static function addOrder($user_id, $items) {
         $db = new Database();
+        $sql = "INSERT INTO orders (user_id) VALUES ('" . $user_id . "')";
+        try {
+            $db->insert($sql);
+            $order_id = $db->getLastId();
+            foreach ($items as $productId => $quantity) {
+                self::addOrderDetail($order_id, $productId, $quantity);
+            }
+
+
+        } catch (Exception $e) {
+            throw $e;
+        }
+
+        $db->close();
+        return $order_id;
+
+
         
         // Iniciar una transacción
-        $db->beginTransaction();
+        // $db->beginTransaction();
         
-        try {
-            $sql = "INSERT INTO orders (user_id) VALUES (?)";
-            $stmt = $db->prepare($sql);
-            $stmt->bind_param('i', $user_id);
-            $stmt->execute();
+        // try {
+        //     $sql = "INSERT INTO orders (user_id) VALUES (?)";
+        //     $stmt = $db->prepare($sql);
+        //     $stmt->bind_param('i', $user_id);
+        //     $result = $stmt->execute();
+
+        //     print_r($result);
             
-            $order_id = $db->getLastId();
+        //     $order_id = $db->getLastId();
             
-            // Insertar los detalles del pedido
-            foreach ($items as $item) {
-                $product_id = $item['product_id'];
-                $quantity = $item['quantity'];
-                
-                self::addOrderDetail($order_id, $product_id, $quantity);
-            }
+        //     // Insertar los detalles del pedido
+        //     foreach ($items as $productId => $quantity) {
+        //         self::addOrderDetail($order_id, $productId, $quantity);
+        //     }
             
-            // Confirmar la transacción
-            $db->commit();
+        //     // Confirmar la transacción
+        //     $db->commit();
             
-        } catch (Exception $e) {
-            // Revertir la transacción si algo falla
-            $db->rollBack();
-            throw $e;
-        } finally {
-            $db->close();
-        }
+        // } catch (Exception $e) {
+        //     print_r($e);
+        //     // Revertir la transacción si algo falla
+        //     $db->rollBack();
+        //     throw $e;
+        // } finally {
+        //     $db->close();
+        // }
     }
     
     public static function addOrderDetail($order_id, $product_id, $quantity) {
         $db = new Database();
-        $sql = "INSERT INTO order_details (order_id, product_id, quantity) VALUES (?, ?, ?)";
-        $stmt = $db->prepare($sql);
-        $stmt->bind_param('iii', $order_id, $product_id, $quantity);
-        $stmt->execute();
-        $db->close();
+        $sql = "INSERT INTO order_details (order_id, product_id, quantity) VALUES ('" . $order_id . "', '" . $product_id . "', '" . $quantity . "')";
+        return $db->insert($sql);
+      
+        // $sql = "INSERT INTO order_details (order_id, product_id, quantity) VALUES (?, ?, ?)";
+        // $stmt = $db->prepare($sql);
+        // $stmt->bind_param('iii', $order_id, $product_id, $quantity);
+        // $stmt->execute();
+        // $db->close();
     }
     
 }

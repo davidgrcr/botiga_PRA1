@@ -18,7 +18,7 @@ function fetchFromCart(url, method, body = null, signal = null) {
     .then(response => response.json())
     .then(data => data)
     .catch((error) => {
-        console.error('Error:', error);
+        console.error('Error:', error);        
     });
 }
 
@@ -41,9 +41,11 @@ function updateProductQuantity(productId, quantity, signal) {
 function confirmCheckout({ name,
     email,
     address,
-    password,}) {
+    password,
+    user_type}) {
     return fetchFromCart(CONFIRM_CHECKOUT_URL, 'POST', { name,
         email,
         address,
-        password,});
+        password,
+        user_type});
 }

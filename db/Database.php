@@ -5,7 +5,6 @@ class Database {
     private $password = "";
     private $dbname = "botiga";
     private $conn;
-    private static $instance = null;
 
     public function __construct() {
         $this->conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
@@ -47,5 +46,16 @@ class Database {
     public function prepare($sql) {
         return $this->conn->prepare($sql);
     }
+
+    public function delete($sql) {
+        return $this->conn->query($sql);
+    }
+
+    public function insert($sql) {
+        return $this->conn->query($sql);
+    }
+
+    public function getLastId() {
+        return $this->conn->insert_id;
+    }
 }
-?>

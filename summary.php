@@ -41,6 +41,8 @@ ob_start(); // Inicia la captura de salida
         <?php if (isset($_POST['password'])): ?>
             <input type="hidden" name="password" value="<?php echo $_POST['password']; ?>">
         <?php endif; ?>
+        <input type="hidden" name="user_type" value="<?php echo (isset($_POST['password']) && isset($_POST['email'])) ? 'registered' : 'guest' ?>">
+
             
     </section>
     <section class="cart_information">
@@ -104,14 +106,17 @@ echo $layout;
         const email = document.querySelector('input[name="email"]')?.value;
         const address = document.querySelector('input[name="address"]')?.value;
         const password = document.querySelector('input[name="password"]')?.value;
+        const userType = document.querySelector('input[name="user_type"]')?.value;
         confirmCheckout({
             name,
             email,
             address,
-            password
-        }).then(() => {
-            console.log('checkout confirmed');
+            password,
+            user_type: userType
+        }).then((data) => {
+            console.log(data);
+            alert('Purchase completed successfully!');
+            window.location.href = 'index.php';
         });
-        console.log('confirm');
     });
 </script>
