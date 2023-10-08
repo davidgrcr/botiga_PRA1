@@ -4,6 +4,7 @@ const GET_PRODUCTS_FROM_CART_URL = CART_SERVICES_URL + 'getProducts.php';
 const ADD_TO_CART_URL = CART_SERVICES_URL + 'addProduct.php';
 const REMOVE_PRODUCT_FROM_CART_URL = CART_SERVICES_URL + 'removeProduct.php';
 const UPDATE_PRODUCT_QUANTITY_URL = CART_SERVICES_URL + 'updateProductQuantity.php';
+const CONFIRM_CHECKOUT_URL = CART_SERVICES_URL + 'confirmCart.php';
 
 function fetchFromCart(url, method, body = null, signal = null) {
     return fetch(url, {
@@ -35,4 +36,14 @@ function removeProductFromCart(productId) {
 
 function updateProductQuantity(productId, quantity, signal) {
     return fetchFromCart(UPDATE_PRODUCT_QUANTITY_URL, 'POST', { product_id: productId, quantity:+quantity }, signal);
+}
+
+function confirmCheckout({ name,
+    email,
+    address,
+    password,}) {
+    return fetchFromCart(CONFIRM_CHECKOUT_URL, 'POST', { name,
+        email,
+        address,
+        password,});
 }

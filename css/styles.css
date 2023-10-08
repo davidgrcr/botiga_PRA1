@@ -17,6 +17,11 @@ h1 {
     font-size: 24px;
 }
 
+h2 {
+    text-transform: capitalize;
+    font-size: 18px;
+}
+
 a {
     color: black;
     text-decoration: none;
@@ -65,6 +70,10 @@ button.link:hover {
     text-decoration-color: #8bb9fe;
 }
 
+.capitalize {
+    text-transform: capitalize;
+}
+
 .cart-item a,
 .landing a,
 .category_page  a {
@@ -77,6 +86,7 @@ button.link:hover {
     text-decoration: underline;
 }
 
+.summary_page,
 .checkout_page,
 .product_page,
 .category_page {

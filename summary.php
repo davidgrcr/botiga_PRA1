@@ -6,55 +6,53 @@ if (!isset($_POST['checkout_form_as_guess']) && !isset($_POST['checkout_form_as_
     header('Location: cart.php');
 }
 
+function getProductGrilla($product, $quantity) {
+    $grilla = "<section class='product'>";
+    $grilla .= "<figure><img src='img/products/" . $product->getImage() . "' alt='" . $product->getName() . "'></figure>";
+    $grilla .= "<div>";
+    $grilla .= "<p class='capitalize'>" . $quantity . " x " . $product->getName() . "</p>";
+    $grilla .= "</div></section>
+    ";
+    return $grilla;
+}
+
 session_start();
 ob_start(); // Inicia la captura de salida
 ?>
-<div class="checkout_page">
+<div class="summary_page">
     <h1>Order summary</h1>
     <section class="user_information">
         <h2>User information</h2>
         <div>
         <?php if (isset($_POST['name'])): ?>
-            <p>Name: <?php echo $_POST['name']; ?></p>
+            <p><span>Name:</span> <?php echo $_POST['name']; ?></p>
+            <input type="hidden" name="name" value="<?php echo $_POST['name']; ?>">
         <?php endif; ?>
 
         <?php if (isset($_POST['email'])): ?>
-            <p>Email: <?php echo $_POST['email']; ?></p>
+            <p><span>Email:</span> <?php echo $_POST['email']; ?></p>
+            <input type="hidden" name="email" value="<?php echo $_POST['email']; ?>">
         <?php endif; ?>
 
         <?php if (isset($_POST['address'])): ?>
-            <p>Address: <?php echo $_POST['address']; ?></p>
+            <p><span>Address:</span> <?php echo $_POST['address']; ?></p>
+            <input type="hidden" name="address" value="<?php echo $_POST['address']; ?>">
         <?php endif; ?>
+        <?php if (isset($_POST['password'])): ?>
+            <input type="hidden" name="password" value="<?php echo $_POST['password']; ?>">
+        <?php endif; ?>
+            
     </section>
     <section class="cart_information">
-        <h2>Cart information</h2>
-        <table class="cart-container">
-    <thead>
-        <tr class="cart-header">
-            <th class="product-info">Product</th>
-            <th class="product-quantity">Quantity</th>
-            <th class="product-remove">Actions</th>
-        </tr>
-    </thead>
-    <tbody>
+        <h2>Cart information</h2>        
         <?php foreach ($_SESSION['cart'] as $productId => $quantity): ?>
             <?php $product = ProductDAO::getProductById($productId); ?>
-            <tr class="cart-item">
-                <td class="product-info">
-                    <img src="img/products/<?php echo $product->getImage(); ?>" alt="<?php echo $product->getName(); ?>">
-                    <a href="product.php?product_id= <?php echo $product->getId() ?>"><?php echo  $product->getName()  ?></a>
-                </td>
-                <td class="product-quantity">
-                    <input type="number" value="<?php echo $quantity; ?>" min="1" max="10" data-product-id="<?php echo $product->getId(); ?>">
-                </td>
-                <td class="product-remove">
-                    <button class="link remove_product" data-product-id="<?php echo $product->getId(); ?>">(X) Delete</button>
-                </td>
-            </tr>
+            <?php echo getProductGrilla($product, $quantity); ?>     
         <?php endforeach; ?>
-    </tbody>
-</table>
     </section>
+    <footer class="cart-footer">
+        <button class="confirm primary"> Confrim Checkout!!</button>
+    </footer>
 </div>
 <?php 
 $content = ob_get_clean();
@@ -64,33 +62,56 @@ echo $layout;
 ?>
 
 <style>
-.cart-container {
-  width: 80%;
-  border-collapse: collapse;
-  margin : 0 auto;
+.summary_page .user_information,
+.summary_page .cart_information {
+    border: 1px solid black;
+    padding: 20px;
+    margin: 20px auto;
+    width: 100%;
+    position: relative;
 }
 
-.cart-container th,
-.cart-container td {
-  text-align: left;
-  padding: 8px;
+.summary_page section h2 {
+    display: block;
+    position: absolute;
+    top: -30px;
+    background-color: #ffffff;
+    padding: 5px;
 }
 
-.cart-container .product-info {
-  width: 50%;
+.summary_page span {
+    font-weight: bold;
 }
 
-.cart-container .product-info span {
-  text-transform: capitalize;
+.summary_page .product {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    align-items: center;
+    text-wrap: balance;
 }
 
-.product-info img {
-  max-width: 50px;
-  vertical-align: middle;
+.summary_page  img {
+    width: 75px;
+    aspect-ratio: auto 1 / 1;
 }
-
-.product-info span {
-  vertical-align: middle;
-}
-
 </style>
+<script>
+    document.querySelector('.confirm').addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const name = document.querySelector('input[name="name"]')?.value;
+        const email = document.querySelector('input[name="email"]')?.value;
+        const address = document.querySelector('input[name="address"]')?.value;
+        const password = document.querySelector('input[name="password"]')?.value;
+        confirmCheckout({
+            name,
+            email,
+            address,
+            password
+        }).then(() => {
+            console.log('checkout confirmed');
+        });
+        console.log('confirm');
+    });
+</script>

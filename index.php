@@ -16,7 +16,7 @@
 	include 'layout.php'; // Incluye el archivo una sola vez
 	$layout = ob_get_clean(); // Guarda la salida en una variable y termina la captura
 
-  	echo $layout;
+  	echo $layout;	  
 ?>
 <style>
 .landing {

@@ -28,11 +28,24 @@ class Database {
         $this->conn->close();
     }
 
-    public static function getInstance() {
-        if (self::$instance === null) {
-            self::$instance = new Database();
-        }
-        return self::$instance;
+    // Iniciar una transacción
+    public function beginTransaction() {
+        $this->conn->begin_transaction();
+    }
+
+    // Confirmar una transacción
+    public function commit() {
+        $this->conn->commit();
+    }
+
+    // Revertir una transacción
+    public function rollBack() {
+        $this->conn->rollback();
+    }
+
+    // Método para preparar una sentencia
+    public function prepare($sql) {
+        return $this->conn->prepare($sql);
     }
 }
 ?>
