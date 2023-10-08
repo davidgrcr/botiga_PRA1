@@ -1,17 +1,34 @@
 <?php
 include_once 'db/Database.php';
 include_once 'model/ProductDAO.php';
-// Iniciar la sesión
-session_start();
 
-// Comprobar si la matriz del carrito ya existe, si no, crear una
-if (!isset($_SESSION['cart'])) {
-    $_SESSION['cart'] = array();
+if (!isset($_POST['checkout_form_as_guess']) && !isset($_POST['checkout_form_as_registered_user'])) {
+    header('Location: cart.php');
 }
 
-ob_start();
+session_start();
+ob_start(); // Inicia la captura de salida
 ?>
-<table class="cart-container">
+<div class="checkout_page">
+    <h1>Order summary</h1>
+    <section class="user_information">
+        <h2>User information</h2>
+        <div>
+        <?php if (isset($_POST['name'])): ?>
+            <p>Name: <?php echo $_POST['name']; ?></p>
+        <?php endif; ?>
+
+        <?php if (isset($_POST['email'])): ?>
+            <p>Email: <?php echo $_POST['email']; ?></p>
+        <?php endif; ?>
+
+        <?php if (isset($_POST['address'])): ?>
+            <p>Address: <?php echo $_POST['address']; ?></p>
+        <?php endif; ?>
+    </section>
+    <section class="cart_information">
+        <h2>Cart information</h2>
+        <table class="cart-container">
     <thead>
         <tr class="cart-header">
             <th class="product-info">Product</th>
@@ -37,52 +54,14 @@ ob_start();
         <?php endforeach; ?>
     </tbody>
 </table>
-<footer class="cart-footer">
-    <a class="link" href="checkout.php">Checkout > </a>
-</footer>
-
-<?php
-
-// Almacenar el contenido en la variable $content y limpiar el búfer
+    </section>
+</div>
+<?php 
 $content = ob_get_clean();
-
-ob_start(); // Inicia la captura de salida
-include 'layout.php'; 
+include 'layout.php';
 $layout = ob_get_clean(); // Guarda la salida en una variable y termina la captura
 echo $layout;
 ?>
-<script>
-    document.querySelectorAll('.remove_product').forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            removeProductFromCart(e.target.dataset.productId).then(() => {
-                window.location.reload();
-            });
-        });
-    });
-    
-    const controllers = {};
-
-    document.querySelectorAll('.product-quantity input').forEach(input => {
-        input.addEventListener('input', function() {
-            const productId = this.dataset.productId;
-
-            // Si ya hay un controlador para este producto, aborta la petición
-            if (controllers[productId]) {
-                controllers[productId].abort();
-            }
-
-            // Crea un nuevo AbortController para este producto
-            controllers[productId] = new AbortController();
-            const signal = controllers[productId].signal;
-
-            updateProductQuantity(productId, this.value, signal).then(() => {
-                window.dispatchEvent(new Event('cart-updated'));
-            });
-        });
-    });
-</script>
 
 <style>
 .cart-container {
