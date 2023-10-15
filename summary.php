@@ -56,7 +56,8 @@ ob_start(); // Inicia la captura de salida
         <button class="confirm primary"> Confrim Checkout!!</button>
     </footer>
 </div>
-<?php 
+<?php
+$title = 'Summary | Shoes Store';
 $content = ob_get_clean();
 include 'layout.php';
 $layout = ob_get_clean(); // Guarda la salida en una variable y termina la captura

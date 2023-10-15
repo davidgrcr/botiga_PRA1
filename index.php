@@ -11,12 +11,11 @@
 		</div>';
 	}
 	$content .= '</div>';
-
-	ob_start(); // Inicia la captura de salida
-	include 'layout.php'; // Incluye el archivo una sola vez
-	$layout = ob_get_clean(); // Guarda la salida en una variable y termina la captura
-
-  	echo $layout;	  
+	$title = 'Shoes Store';
+	ob_start();
+	include 'layout.php';
+	$layout = ob_get_clean();
+  	echo $layout;
 ?>
 <style>
 .landing {

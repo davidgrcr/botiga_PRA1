@@ -40,8 +40,8 @@ ob_start(); // Inicia la captura de salida
             <input type="submit" name="checkout_form_as_registered_user" value="Submit me!" />
         </form>
 </div>
-<?php 
-
+<?php
+$title = 'Checkout | Shoes Store';
 $content = ob_get_clean();
 include 'layout.php';
 $layout = ob_get_clean(); // Guarda la salida en una variable y termina la captura

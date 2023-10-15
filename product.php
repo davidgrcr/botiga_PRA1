@@ -12,9 +12,11 @@ $content .= "<p>" . $product->getDescription() . "</p>";
 $content .= "<button class='add_product' data-product-id='". $product->getId() . "'. >Add to cart</button>";
 $content .= "</div></section></article>";
 
-ob_start(); // Inicia la captura de salida
-include 'layout.php'; 
-$layout = ob_get_clean(); // Guarda la salida en una variable y termina la captura
+$title = ucfirst($product->getName()) . ' | Shoes Store';
+
+ob_start();
+include 'layout.php';
+$layout = ob_get_clean();
 echo $layout;
 ?>
 <script>
