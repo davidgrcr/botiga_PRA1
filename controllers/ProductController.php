@@ -9,7 +9,7 @@ class ProductController extends Controller
     public function __construct()
     {
         parent::__construct();
-        $this->loadModel('Product');
+        $this->loadModelRepository('Product');
     }
 
 

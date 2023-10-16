@@ -6,6 +6,12 @@ const REMOVE_PRODUCT_FROM_CART_URL = CART_SERVICES_URL + 'removeProduct.php';
 const UPDATE_PRODUCT_QUANTITY_URL = CART_SERVICES_URL + 'updateProductQuantity.php';
 const CONFIRM_CHECKOUT_URL = CART_SERVICES_URL + 'confirmCart.php';
 
+// NEW API
+
+const NEW_ADD_TO_CART_URL = 'http://localhost/api/addToCart';
+const NEW_REMOVE_PRODUCT_FROM_CART_URL = 'http://localhost/api/removeItem';
+
+
 function fetchFromCart(url, method, body = null, signal = null) {
     return fetch(url, {
         method: method,
@@ -27,11 +33,11 @@ function getProductsFormCart(signal) {
 }
 
 function addToCart(productId, quantity) {
-    return fetchFromCart(ADD_TO_CART_URL, 'POST', { product_id: productId, quantity: quantity });
+    return fetchFromCart(NEW_ADD_TO_CART_URL, 'POST', { product_id: productId, quantity: quantity });
 }
 
 function removeProductFromCart(productId) {
-    return fetchFromCart(REMOVE_PRODUCT_FROM_CART_URL, 'POST', { product_id: productId });
+    return fetchFromCart(NEW_REMOVE_PRODUCT_FROM_CART_URL, 'POST', { product_id: productId });
 }
 
 function updateProductQuantity(productId, quantity, signal) {

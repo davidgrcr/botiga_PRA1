@@ -31,7 +31,7 @@ class ProductRepository
         $product = null;
         if ($result) {
             $row = $result->fetch_assoc();
-            $product = new ProductModel($row['id'], $row['name'], $row['description'], $row['category_id'], $row['price'], $row['img']);
+            $product = new ProductModel($row['id'], $row['name'], $row['description'], $row['category_id'], $row['price'], $row['img']);            
         }
         $db->close();
         return $product;

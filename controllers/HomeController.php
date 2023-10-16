@@ -8,7 +8,7 @@ class HomeController extends Controller
     public function __construct()
     {
         parent::__construct();
-        $this->loadModel('Category');
+        $this->loadModelRepository('Category');
     }
 
 

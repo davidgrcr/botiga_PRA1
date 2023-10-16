@@ -19,7 +19,7 @@ $categories = $categoryRepository->getAllCategories();
             ?>
         </ul>
     </nav>
-    <a href="cart.php" class="cart">
+    <a href="/cart" class="cart">
         <svg width="40" height="40" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);">
             <path d="M21 4H2v2h2.3l3.521 9.683A2.004 2.004 0 0 0 9.7 17H18v-2H9.7l-.728-2H18c.4 0 .762-.238.919-.606l3-7A.998.998 0 0 0 21 4z"></path>
             <circle cx="10.5" cy="19.5" r="1.5"></circle>

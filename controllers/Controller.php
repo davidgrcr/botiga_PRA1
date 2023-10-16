@@ -14,7 +14,7 @@ class Controller
         $this->views = new Views();
     }
 
-    public function loadModel($modelName)
+    public function loadModelRepository($modelName)
     {
         $folder = strtolower($modelName);
         $repositoryClass = "models\\" . $folder . "\\" . $modelName . "Repository";
