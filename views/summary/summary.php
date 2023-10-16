@@ -101,7 +101,7 @@ function getProductGrilla($product, $quantity)
         }).then((data) => {
             console.log(data);
             alert('Purchase completed successfully!');
-            window.location.href = 'index.php';
+            window.location.href = '/';
         });
     });
 </script>

@@ -1,8 +1,8 @@
 <?php
 namespace controllers;
 
-use views\Views; // Asegúrate de que esto coincida con el espacio de nombres real de la clase Views
-use models\Model; // Lo mismo aquí para el modelo
+use views\Views;
+use models\Model;
 
 class Controller
 {

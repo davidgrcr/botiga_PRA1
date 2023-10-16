@@ -22,8 +22,6 @@ if (isset($path[1]) && is_numeric($path[1])) {
     $param = $path[2] ?? null;
 }
 
-echo "Controlador: $controller<br>";
-
 if (class_exists($controller)) {
     $controllerInstance = new $controller();
     if (method_exists($controllerInstance, $action)) {
