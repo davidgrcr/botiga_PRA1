@@ -32,6 +32,7 @@ footer {
     margin-top: 100px;
 }
 
+a.to_pay,
 input[type=submit],
 input[type=button],
 button {
@@ -45,8 +46,10 @@ button {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+    border-radius: 30px;
 }
 
+a.to_pay:hover,
 input[type=submit]:hover,
 input[type=button]:hover,
 button:hover {

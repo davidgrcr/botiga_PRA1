@@ -49,16 +49,28 @@ class UserRepository
     public function createUser($name, $email, $password, $address, $user_type)
     {
         $db = new Database();
-        $sql = "INSERT INTO users (name, email, password, address, user_type) 
-                VALUES ('$name', '$email', '$password', '$address', '$user_type')";
+        $sql = "INSERT INTO users (name, email, password, address, user_type)
+                VALUES (?, ?, ?, ?, ?)";
 
-        try {
-            $result = $db->insert($sql);
-        } catch (\Exception $e) {
-            if ($e->getCode() == 1062) {
-                $result = $this->getUserByEmail($email)->getId();
-            }
-        }
+        $stmt = $db->prepare($sql);
+        $stmt->bind_param("sssss", $name, $email, $password, $address, $user_type);
+        $stmt->execute();
+        $result = $db->getLastId();
+        $stmt->close();
+        $db->close();
+
+        return $result;
+    }
+
+    public function updateUser($id, $name, $email, $password, $address, $user_type)
+    {
+        $db = new Database();
+        $sql = "UPDATE users SET name = ?, email = ?, password = ?, address = ?, user_type = ? WHERE id = $id";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bind_param("sssss", $name, $email, $password, $address, $user_type);
+        $result = $stmt->execute();
+        $stmt->close();
         $db->close();
         return $result;
     }

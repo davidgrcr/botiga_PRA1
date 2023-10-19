@@ -15,11 +15,13 @@ function fetchFromCart(url, method, body = null, signal = null) {
     body: body ? JSON.stringify(body) : null,
     signal: signal,
   })
-    .then((response) => response.json())
-    .then((data) => data)
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+    .then((response) => {
+      if(!response.ok) {
+        throw Error(response.statusText);
+      }
+      return response.json();
+    })
+    .then((data) => data);
 }
 
 function getProductsFormCart(signal) {

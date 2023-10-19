@@ -102,6 +102,9 @@ function getProductGrilla($product, $quantity)
             console.log(data);
             alert('Purchase completed successfully!');
             window.location.href = '/';
+        }).catch((error) => {
+            console.log(error);
+            alert('There was an error with your purchase. Please try again later.');
         });
     });
 </script>

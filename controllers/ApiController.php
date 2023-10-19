@@ -73,6 +73,7 @@ class ApiController extends Controller
                                               $data['password'],
                                               $data['address'],
                                               $data['user_type']);
+                                              
 
             $order_id = $this->Order->addOrder($userID, $cartItems);
         } catch (\Exception $e) {
