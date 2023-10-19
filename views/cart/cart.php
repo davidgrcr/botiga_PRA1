@@ -30,7 +30,7 @@
     </tbody>
 </table>
 <footer class="cart-footer">
-    <a class="to_pay" href="/checkout">Checkout ></a>
+    <a class="to_pay" href="/checkout">Checkout &nbsp&nbsp></a>
 </footer>
 
 <script>
@@ -94,5 +94,9 @@
 
 .product-info span {
   vertical-align: middle;
+}
+
+.cart-footer .to_pay {
+  width: 200px;
 }
 </style>

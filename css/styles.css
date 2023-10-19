@@ -1,3 +1,10 @@
+:root {
+    --main-btn-conf-bg-color: #007bff;
+    --main-btn-conf-bg-color-hover: #0069d9;
+    --main-btn-conf-text-color: white;
+    --link-btn-conf-bg-color: rgba(0, 0, 0, 0);
+    --link-btn-conf-text-color: rgb(110, 168, 254);
+}
 
 body, html {
     margin-left: 12px;
@@ -36,9 +43,9 @@ a.to_pay,
 input[type=submit],
 input[type=button],
 button {
-    background-color: #007bff;
+    background-color: var(--main-btn-conf-bg-color);
     border: none;
-    color: white;
+    color: var(--main-btn-conf-text-color);
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
@@ -53,24 +60,24 @@ a.to_pay:hover,
 input[type=submit]:hover,
 input[type=button]:hover,
 button:hover {
-    background-color: #0069d9;
+    background-color: var(--main-btn-conf-bg-color-hover);
 }
 
 a.link,
 button.link {
-    background-color: rgba(0, 0, 0, 0);
-    border-color: rgba(0, 0, 0, 0); 
-    color: rgb(110, 168, 254);
+    background-color: var(--link-btn-conf-bg-color);
+    border-color: var(--link-btn-conf-bg-color);
+    color: var(--link-btn-conf-text-color);
     text-decoration: underline;
-    text-decoration-color: rgba(110, 168, 254);
+    text-decoration-color: var(--link-btn-conf-text-color);
     padding: 0;
     font-size: 14px;
 }
 
 a.link:hover,
 button.link:hover {
-    color: #8bb9fe;
-    text-decoration-color: #8bb9fe;
+    color: var(--link-btn-conf-text-color);
+    text-decoration-color: var(--link-btn-conf-text-color)
 }
 
 .capitalize {
