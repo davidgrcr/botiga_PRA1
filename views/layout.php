@@ -26,7 +26,7 @@
 
 <footer>
     <!-- contenido del pie de página -->
-	<a class="link" href="admin.php">Admin</a>
+	<a class="link" href="/admin">ADMIN</a>
 </footer>
 
 </body>

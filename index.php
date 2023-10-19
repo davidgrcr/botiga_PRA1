@@ -22,15 +22,18 @@ if (isset($path[1]) && is_numeric($path[1])) {
     $param = $path[2] ?? null;
 }
 
+echo "Controller: $controller<br>";
+echo "Action: $action<br>";
+
 if (class_exists($controller)) {
     $controllerInstance = new $controller();
     if (method_exists($controllerInstance, $action)) {
         $controllerInstance->$action($param);
     } else {
         // Manejar como error 404, acción no encontrada
-        echo "Página no encontrada";
+        echo "Método no encontrado";
     }
 } else {
     // Manejar como error 404, controlador no encontrado
-    echo "Página no encontrada";
+    echo "Controller no encontrado";
 }
