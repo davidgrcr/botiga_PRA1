@@ -6,11 +6,11 @@
         <form action="/summary" method="post">
             <div class="form_group">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="Your email" required />
+                <input type="email" name="email" placeholder="Your email" required />
             </div>
             <div class="form_group">
                 <label for="address">Address</label>
-                <input type="text" name="address" id="address" placeholder="Your address" required />
+                <textarea rows="3" name="address" placeholder="Your address" required></textarea>
             </div>
             <input type="submit" name="checkout_form_as_guess" value="Submit me!" />
         </form>
@@ -20,19 +20,19 @@
         <form action="/summary" method="post">
         <div class="form_group">
             <label for="name">Name</label>
-            <input type="text" name="name" id="name" placeholder="Your name"  />
+            <input type="text" name="name" placeholder="Your name"  />
             </div>
             <div class="form_group">
             <label for="password">Password</label>
-            <input type="password" name="password" id="password" placeholder="Your password" required />
+            <input type="password" name="password" placeholder="Your password" required />
             </div>
             <div class="form_group">
             <label for="email">Email</label>
-            <input type="email" name="email" id="email" placeholder="Your email"  />
+            <input type="email" name="email" placeholder="Your email"  />
             </div>
             <div class="form_group">
             <label for="address">Address</label>
-            <input type="text" name="address" id="address" placeholder="Your address" required />
+            <textarea rows="3" name="address" placeholder="Your address" required></textarea>
             </div>
             <input type="submit" name="checkout_form_as_registered_user" value="Submit me!" />
         </form>
