@@ -24,6 +24,7 @@ if (isset($path[1]) && is_numeric($path[1])) {
 
 // echo "Controller: $controller<br>";
 // echo "Action: $action<br>";
+// echo "Param: $param<br>";
 
 if (class_exists($controller)) {
     $controllerInstance = new $controller();

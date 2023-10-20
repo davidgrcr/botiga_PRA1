@@ -13,7 +13,7 @@ class ApiAdminController extends ApiController
             session_start();
 
             $correct_email = "admin@admin.com";
-            $correct_contrasenya = "1234";
+            $correct_contrasenya = "admin";
 
             $email = $data['email'];
             $contrasenya = $data['contrasenya'];
@@ -33,6 +33,5 @@ class ApiAdminController extends ApiController
     {
         session_start();
         session_destroy();
-        $this->views->getView('admin', 'login', ['title' => 'Admin | Shoes Store']);
-    }
+        $this->sendJsonResponse(200, 'Usuario deslogueado exitosamente.');    }
 }

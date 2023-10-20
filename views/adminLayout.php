@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <title><?php echo $title ?></title>
+	<title><?php echo $title ?></title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -11,18 +12,46 @@
 	<script src="/js/auth_services.js"></script>
 
 </head>
+
 <body>
 
-<header>
-</header>
+	<header>
+		<?php
+		session_start();
+		if (isset($_SESSION['email']) && isset($_SESSION['contrasenya'])) { ?>
+			<nav class="navbar navbar-expand-lg bg-body-tertiary">
+				<div class="container-fluid">
+					<a href="/admin" class="navbar-brand">Admin</a>
+					<button onclick="logOut()" class="btn btn-outline-success">Log out</button>
+				</div>
+				</div>
+			</nav>
+		<?php }
+		?>
+	</header>
 
-<main>
-    <!-- contenido del cuerpo de la página -->
-    <?php echo $content; ?>
-</main>
+	<main>
+		<div class="container text-center">
+			<?php if (isset($_SESSION['email']) && isset($_SESSION['contrasenya'])) { ?>
+				<div class="row align-items-end">
+					<div class="col"></div>
+					<div class="col-8">
+						<?php echo $content; ?>
+					</div>
+					<div class="col"></div>
+				<?php } else { ?>
+					<div class="row align-items-center">
+						
+						<div class="col-8 offset-2">
+							<?php echo $content; ?>
+						</div>
+						
+					<?php } ?>
+	</main>
 
-<footer>
-</footer>
+	<footer>
+	</footer>
 
 </body>
+
 </html>
