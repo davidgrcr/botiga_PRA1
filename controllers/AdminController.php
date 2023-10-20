@@ -13,14 +13,21 @@ class AdminController extends Controller
         $this->views = new AdminViews();
     }
 
+    private function isCurrentUserAdmin()
+    {
+        session_start();
+        return isset($_SESSION['email']) && isset($_SESSION['contrasenya']);
+    }
+
     public function index()
     {
         session_start();
 
-        if (isset($_SESSION['email']) && isset($_SESSION['contrasenya'])) {
+        if ($this->isCurrentUserAdmin()) {
             $this->views->getView('admin', 'home', ['title' => 'Admin | Shoes Store']);
         } else {
             $this->views->getView('admin', 'login', ['title' => 'Admin | Shoes Store']);
         }
     }
+
 }

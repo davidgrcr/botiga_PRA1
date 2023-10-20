@@ -1,4 +1,4 @@
-const CART_SERVICES_URL = "http://localhost/api/";
+const CART_SERVICES_URL = "http://localhost/apiCart/";
 
 const GET_PRODUCTS_FROM_CART_URL = CART_SERVICES_URL + "getCart";
 const ADD_TO_CART_URL = CART_SERVICES_URL + "addToCart";

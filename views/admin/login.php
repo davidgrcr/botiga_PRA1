@@ -3,7 +3,7 @@
         <div class="col"></div>
         <div class="col-6">
         <h2>Admin Login</h2>
-            <form action="/auth" method="post">
+            <form id="formLogin" action="" method="post">
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Email address</label>
                     <input type="email" name="email" class="form-control" aria-describedby="emailHelp">
@@ -27,3 +27,26 @@
 
     }
 </style>
+<script>
+ document.getElementById("formLogin").addEventListener("submit", function (e) {
+        e.preventDefault();
+        let form = e.target;
+        let formData = new FormData(form);
+        let data = Object.fromEntries(formData);
+        console.log(data);
+        fetch('/apiAdmin/login', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }).then(response => {
+            if (response.status === 201) {
+                window.location.href = '/admin';
+            } else {
+                alert('Usuario o contraseña incorrectos.');
+            }
+        });
+    });
+
+</script>
