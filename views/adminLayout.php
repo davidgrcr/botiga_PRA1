@@ -22,7 +22,21 @@
 			<nav class="navbar navbar-expand-lg bg-body-tertiary">
 				<div class="container-fluid">
 					<a href="/admin" class="navbar-brand">Admin</a>
+					<div class=" navbar-collapse" id="navbarNav">
+						<ul class="navbar-nav">
+							<li class="nav-item">
+								<a class="nav-link" href="/admin">Orders</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="/admin/categories">Categories</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="/admin/products">Products</a>
+							</li>
+						</ul>
+					</div>
 					<button onclick="logOut()" class="btn btn-outline-success">Log out</button>
+
 				</div>
 				</div>
 			</nav>
@@ -41,11 +55,11 @@
 					<div class="col"></div>
 				<?php } else { ?>
 					<div class="row align-items-center">
-						
+
 						<div class="col-8 offset-2">
 							<?php echo $content; ?>
 						</div>
-						
+
 					<?php } ?>
 	</main>
 
