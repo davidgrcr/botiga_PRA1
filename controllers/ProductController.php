@@ -18,7 +18,8 @@ class ProductController extends Controller
         $product = $this->Product->getProductById($productId);
         $this->views->getView('product', 'product', [
             'title' => ucfirst($product->getName()) . ' | Shoes Store',
-            'product' => $product
+            'product' => $product,
+            'activeCategory' => $product->getCategoryId()
         ]);
     }
 }
