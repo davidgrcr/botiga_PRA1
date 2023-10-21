@@ -1,7 +1,7 @@
 <?php
 
 echo "<article class='product_page'>";
-echo "<section class='product'>";
+echo "<section class='card'>";
 echo "<figure><img src='/img/products/" . $product->getImage() . "' alt='" . $product->getName() . "'></figure>";
 echo "<div>";
 echo "<h1>" . $product->getName() . "</h1>";
@@ -24,28 +24,6 @@ echo "</div></section></article>";
                 e.target.disabled = false;
                 e.target.textContent = 'Add to cart';
             });
-        }, 2000);
-        
-
+        }, 500);
     });
 </script>
-
-<style>
-    .product_page .product {
-        display: flex;
-        gap: 20px;
-        list-style: none;
-        align-items: center;
-        text-wrap: balance;
-    }
-
-    .product_page img {
-        width: 150px;
-        aspect-ratio: auto 1 / 1;
-    }
-
-    .product_page .add_product {
-        margin-top: 50px;
-        width: 200px;
-    }
-</style>

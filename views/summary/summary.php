@@ -2,7 +2,9 @@
 function getProductGrilla($product, $quantity)
 {
     $grilla = "<section class='product'>";
-    $grilla .= "<figure><img src='img/products/" . $product->getImage() . "' alt='" . $product->getName() . "'></figure>";
+    $grilla .= "<figure>";
+    $grilla .= "<img src='/img/products/" . $product->getImage() . "' alt='" . $product->getName() . "'>";
+    $grilla .= "</figure>";
     $grilla .= "<div>";
     $grilla .= "<p class='capitalize'>" . $quantity . " x " . $product->getName() . "</p>";
     $grilla .= "</div></section>
@@ -47,42 +49,6 @@ function getProductGrilla($product, $quantity)
         <button class="confirm primary"> Confrim Checkout!!</button>
     </footer>
 </div>
-
-<style>
-    .summary_page .user_information,
-    .summary_page .cart_information {
-        border: 1px solid black;
-        padding: 20px;
-        margin: 20px auto;
-        width: 100%;
-        position: relative;
-    }
-
-    .summary_page section h2 {
-        display: block;
-        position: absolute;
-        top: -30px;
-        background-color: #ffffff;
-        padding: 5px;
-    }
-
-    .summary_page span {
-        font-weight: bold;
-    }
-
-    .summary_page .product {
-        display: flex;
-        gap: 20px;
-        list-style: none;
-        align-items: center;
-        text-wrap: balance;
-    }
-
-    .summary_page img {
-        width: 75px;
-        aspect-ratio: auto 1 / 1;
-    }
-</style>
 <script>
     document.querySelector('.confirm').addEventListener('click', function(e) {
         e.preventDefault();

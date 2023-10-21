@@ -28,46 +28,6 @@ $categories = $categoryRepository->getAllCategories();
         (<span id="cart">0</span>)
     </a>
 </div>
-
-<style>
-.header {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.header a {
-    text-transform: uppercase;
-}
-.header nav a {
-    padding: 10px;
-}
-
-.header nav a.active {
-    border-bottom: 1px solid black;
-}
-
-
-.header nav a:hover {
-    background-color: black;
-    color: white;
-}
-
-.header ul {
-    display: flex;
-    list-style: none;
-    justify-content: space-between;
-    gap: 45px;
-}
-
-.header .cart {
-    padding-right: 20px;
-    text-decoration: none;
-
-}
-</style>
-
 <script>
     const cart = document.querySelector('#cart');
     let abortController = new AbortController(); // Inicializa el AbortController

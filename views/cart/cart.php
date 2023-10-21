@@ -13,7 +13,7 @@
             <tr class="cart-item">
                 <td class="product-info">
                     <img src="/img/products/<?php echo $product->getImage(); ?>" alt="<?php echo $product->getName(); ?>">
-                    <a href="/product/<?php echo $product->getId() ?>">
+                    <a class="black_link" href="/product/<?php echo $product->getId() ?>">
                         <?php echo  $product->getName()  ?>
                     </a>
                 </td>
