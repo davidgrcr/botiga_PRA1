@@ -16,6 +16,9 @@ class ProductController extends Controller
     public function index($productId)
     {
         $product = $this->Product->getProductById($productId);
-        $this->views->getView('product', 'product', ['title' => 'product | Shoes Store', 'product' => $product]);
+        $this->views->getView('product', 'product', [
+            'title' => ucfirst($product->getName()) . ' | Shoes Store',
+            'product' => $product
+        ]);
     }
 }

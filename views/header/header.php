@@ -4,7 +4,6 @@ use models\Category\CategoryRepository;
 
 $categoryRepository = new CategoryRepository();
 $categories = $categoryRepository->getAllCategories();
-
 ?>
 
 <div class="header">
@@ -14,8 +13,9 @@ $categories = $categoryRepository->getAllCategories();
             <li><a href="/">HOME</a></li>
             <?php
              foreach ($categories as $category) {
-                 echo '<li><a href="/category/' . $category->getId() . '">' . $category->getName() . '</a></li>';
-             }
+                $isActive = ($category->getId() == $activeCategory) ? ' class="active"' : '';
+                echo '<li><a' . $isActive . ' href="/category/' . $category->getId() . '">' . $category->getName() . '</a></li>';
+            }
             ?>
         </ul>
     </nav>
@@ -41,9 +41,13 @@ $categories = $categoryRepository->getAllCategories();
     text-transform: uppercase;
 }
 .header nav a {
-    border: 1px solid black;
     padding: 10px;
 }
+
+.header nav a.active {
+    border-bottom: 1px solid black;
+}
+
 
 .header nav a:hover {
     background-color: black;

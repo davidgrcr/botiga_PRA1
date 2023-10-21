@@ -18,6 +18,10 @@ class CategoryController extends Controller
     {
         $category = $this->Category->getCategoryById($categoryId);
         $products = $this->Product->getProductsByCategoryId($categoryId);
-        $this->views->getView('category', 'category', ['title' => 'category | Shoes Store', 'category' => $category, 'products' => $products]);
+        $this->views->getView('category', 'category', [
+            'title' => ucfirst($category->getName()) .' | Shoes Store',
+            'category' => $category, 'products' => $products,
+            'activeCategory' => $categoryId
+        ]);
     }
 }

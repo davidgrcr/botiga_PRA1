@@ -22,6 +22,6 @@ class CartController extends Controller
             $items[$productId]['quantity'] = $quantity;
         }
         
-        $this->views->getView('cart', 'cart', ['title' => 'cart | Shoes Store', 'items' => $items]);     
+        $this->views->getView('cart', 'cart', ['title' => 'Cart | Shoes Store', 'items' => $items]);     
     }
 }

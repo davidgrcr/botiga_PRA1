@@ -6,6 +6,7 @@ class Views
     public function getView($path, $view, $data = []) {
         $title = $data['title'] ?? 'Home'; // layout.php espera una variable $title
         $content = $this->getContent($path, $view, $data); // layout.php espera una variable $content
+        $activeCategory = $data['activeCategory'] ?? null; // layout.php espera una variable $activeCategory
         require 'views/layout.php';
     }
 

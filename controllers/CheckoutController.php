@@ -8,6 +8,6 @@ class CheckoutController extends Controller
 {
     public function index()
     {
-        $this->views->getView('checkout', 'checkout', ['title' => 'cart | Shoes Store']);     
+        $this->views->getView('checkout', 'checkout', ['title' => 'Checkout | Shoes Store']);
     }
 }
