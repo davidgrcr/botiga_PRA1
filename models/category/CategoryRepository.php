@@ -1,4 +1,5 @@
 <?php
+
 namespace models\Category;
 
 use db\Database;
@@ -14,7 +15,7 @@ class CategoryRepository
         $result = $db->select($sql);
         $categories = [];
         if ($result) {
-            while($row = $result->fetch_assoc()) {
+            while ($row = $result->fetch_assoc()) {
                 $category = new CategoryModel($row['id'], $row['name'], $row['img']);
                 array_push($categories, $category);
             }
@@ -26,13 +27,22 @@ class CategoryRepository
     public function getCategoryById($id)
     {
         $db = new Database();
-        $sql = "SELECT id, name, img FROM categories WHERE id = $id";
-        $result = $db->select($sql);
+        $sql = "SELECT id, name, img FROM categories WHERE id = ?";
+        $stmt = $db->prepare($sql);
+
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
         $category = null;
+
         if ($result) {
             $row = $result->fetch_assoc();
             $category = new CategoryModel($row['id'], $row['name'], $row['img']);
         }
+
+        $stmt->close();
         $db->close();
         return $category;
     }

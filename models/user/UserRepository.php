@@ -78,9 +78,16 @@ class UserRepository
     public function deleteUser($id)
     {
         $db = new Database();
-        $sql = "DELETE FROM users WHERE id = $id";
-        $result = $db->delete($sql);
+        $sql = "DELETE FROM users WHERE id = ?";
+        $stmt = $db->prepare($sql);
+
+        $stmt->bind_param("i", $id);
+
+        $result = $stmt->execute();
+
+        $stmt->close();
         $db->close();
+
         return $result;
     }
 }

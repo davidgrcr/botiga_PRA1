@@ -89,25 +89,33 @@ class OrderRepository
     public function addOrder($user_id, $items)
     {
         $db = new Database();
-        $sql = "INSERT INTO orders (user_id) VALUES ('" . $user_id . "')";
+        $sql = "INSERT INTO orders (user_id) VALUES (?)";
+        $stmt = $db->prepare($sql);
 
-        $db->insert($sql);
-        $order_id = $db->getLastId();
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+
+        $order_id = $stmt->insert_id;
+        $stmt->close();
 
         foreach ($items as $productId => $quantity) {
             $this->addOrderDetail($order_id, $productId, $quantity);
         }
 
         $db->close();
+
         return $order_id;
     }
 
     public function addOrderDetail($order_id, $product_id, $quantity)
     {
         $db = new Database();
-        $sql = "INSERT INTO order_details (order_id, product_id, quantity)
-                VALUES ('" . $order_id . "', '" . $product_id . "', '" . $quantity . "')";
+        $sql = "INSERT INTO order_details (order_id, product_id, quantity) VALUES (?, ?, ?)";
+        $stmt = $db->prepare($sql);
 
-        return $db->insert($sql);
+        $stmt->bind_param("iii", $order_id, $product_id, $quantity);
+        $stmt->execute();
+
+        $stmt->close();
     }
 }
