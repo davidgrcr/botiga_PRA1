@@ -46,4 +46,43 @@ class CategoryRepository
         $db->close();
         return $category;
     }
+
+    public function createCategory($name, $img)
+    {
+        $db = new Database();
+        $sql = "INSERT INTO categories (name, img) VALUES (?, ?)";
+        $stmt = $db->prepare($sql);
+
+        $stmt->bind_param("ss", $name, $img);
+        $stmt->execute();
+
+        $stmt->close();
+        $db->close();
+    }
+
+    public function updateCategory($id, $name, $img)
+    {
+        $db = new Database();
+        $sql = "UPDATE categories SET name = ?, img = ? WHERE id = ?";
+        $stmt = $db->prepare($sql);
+
+        $stmt->bind_param("ssi", $name, $img, $id);
+        $stmt->execute();
+
+        $stmt->close();
+        $db->close();
+    }
+
+    public function deleteCategory($id)
+    {
+        $db = new Database();
+        $sql = "DELETE FROM categories WHERE id = ?";
+        $stmt = $db->prepare($sql);
+
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+
+        $stmt->close();
+        $db->close();
+    }
 }

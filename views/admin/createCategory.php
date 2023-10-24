@@ -1,45 +1,49 @@
 <h1>Create category</h1>
 <form class="row g-3">
   <div class="col-md-6">
-    <label for="inputEmail4" class="form-label">Email</label>
-    <input type="email" class="form-control" id="inputEmail4">
+    <label for="name" class="form-label">
+      Name
+    </label>
+    <input type="text" class="form-control" id="name" name="name" required>
   </div>
   <div class="col-md-6">
-    <label for="inputPassword4" class="form-label">Password</label>
-    <input type="password" class="form-control" id="inputPassword4">
+    <label for="categoryImg" class="form-label">Image</label>
+    <input type="file" class="form-control" id="categoryImg" name="categoryImg" required>
   </div>
-  <div class="col-12">
-    <label for="inputAddress" class="form-label">Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-  </div>
-  <div class="col-12">
-    <label for="inputAddress2" class="form-label">Address 2</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-  </div>
-  <div class="col-md-6">
-    <label for="inputCity" class="form-label">City</label>
-    <input type="text" class="form-control" id="inputCity">
-  </div>
-  <div class="col-md-4">
-    <label for="inputState" class="form-label">State</label>
-    <select id="inputState" class="form-select">
-      <option selected>Choose...</option>
-      <option>...</option>
-    </select>
-  </div>
-  <div class="col-md-2">
-    <label for="inputZip" class="form-label">Zip</label>
-    <input type="text" class="form-control" id="inputZip">
-  </div>
-  <div class="col-12">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Check me out
-      </label>
-    </div>
-  </div>
-  <div class="col-12">
-    <button type="submit" class="btn btn-primary">Sign in</button>
+  <div class="d-grid gap-2 col-6 mx-auto">
+    <button type="submit" id="create-category" class="btn btn-primary mt-5" type="button">Button</button>
   </div>
 </form>
+<script>
+  const name = document.getElementById('name');
+  const categoryImg = document.getElementById('categoryImg');
+  const button = document.querySelector('#create-category');
+
+  button.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const formData = new FormData();
+    formData.append('name', name.value);
+    formData.append('categoryImg', categoryImg.files[0]);
+
+    fetch('/apiAdmin/createCategory', {
+        method: 'POST',
+        headers: {
+          enctype: 'multipart/form-data'
+        },
+        body: formData
+      })
+      .then(response => {
+        if (response.status === 201) {
+          window.location.href = '/admin/categories';
+        } else {
+          response.json().then(data => {
+            alert('Error al crear la categoría. ' + data.message);
+          });
+        }
+      }).catch(error => {
+        console.log(error);
+      });
+  });
+</script>
