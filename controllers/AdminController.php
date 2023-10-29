@@ -101,7 +101,47 @@ class AdminController extends Controller
     public function products()
     {
         if ($this->isCurrentUserAdmin()) {
-            $this->views->getView('admin', 'products', ['title' => 'Admin | Shoes Store']);
+            $products = [];
+            $categoryId = isset($_GET['opcion']) ? $_GET['opcion'] : null;
+            $categories = $this->Category->getAllCategories();
+            if ($categoryId) {
+                $products = $this->Product->getProductsByCategoryId($categoryId);
+            }
+            $this->views->getView('admin', 'products', [
+                'title' => 'Admin | Shoes Store',
+                'products' => $products,
+                'categories' => $categories,
+                'categoryId' => $categoryId
+            ]);
+        } else {
+            header('Location: /admin');
+            exit;
+        }
+    }
+
+    public function createProduct()
+    {
+        if ($this->isCurrentUserAdmin()) {
+            $categories = $this->Category->getAllCategories();
+            $this->views->getView('admin', 'createProduct', [
+                'title' => 'Admin | Shoes Store',
+                'categories' => $categories
+            ]);
+        } else {
+            header('Location: /admin');
+            exit;
+        }
+    }
+
+    public function editProduct($productId)
+    {
+        if ($this->isCurrentUserAdmin()) {
+            $categories = $this->Category->getAllCategories();
+            $this->views->getView('admin', 'editProduct', [
+                'title' => 'Admin | Shoes Store',
+                'product' => $this->Product->getProductById($productId),
+                'categories' => $categories
+            ]);
         } else {
             header('Location: /admin');
             exit;
