@@ -52,11 +52,12 @@ if (count(($products)) == 0) {
                 let productId = e.target.dataset.productId;
                 fetch('/apiAdmin/deleteProduct/' + productId, {
                     method: 'DELETE'
-                }).then(response => {
+                }).then(async response => {
                     if (response.status === 200) {
                         window.location.href = '/admin/products?opcion=<?php echo $categoryId ?>';
                     } else {
-                        alert('Error deleting product.');
+                        const error = await response.json();
+                        alert(`Error deleting product. ${error.message}`);
                     }
                 });
             }

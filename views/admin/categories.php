@@ -36,11 +36,12 @@
                 let categoryId = e.target.dataset.categoryId;
                 fetch('/apiAdmin/deleteCategory/' + categoryId, {
                     method: 'DELETE'
-                }).then(response => {
+                }).then(async response => {
                     if (response.status === 200) {
                         window.location.href = '/admin/categories';
                     } else {
-                        alert('Error deleting category.');
+                        const error = await response.json();
+                        alert(`Error deleting category. ${error.message}`);
                     }
                 });
             }
