@@ -35,7 +35,7 @@
         <input type="file" class="form-control d-none" id="productImg" name="productImg">
     </div>
     <div class="d-grid gap-2 col-6 mx-auto">
-        <button type="submit" id="edit-product" class="btn btn-primary mt-5">Button</button>
+        <button type="submit" id="edit-product" class="btn btn-primary mt-5">Submit</button>
     </div>
 </form>
 <script>

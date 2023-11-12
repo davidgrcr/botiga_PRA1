@@ -11,7 +11,7 @@
     <input type="file" class="form-control" id="categoryImg" name="categoryImg" required>
   </div>
   <div class="d-grid gap-2 col-6 mx-auto">
-    <button type="submit" id="create-category" class="btn btn-primary mt-5" type="button">Button</button>
+    <button type="submit" id="create-category" class="btn btn-primary mt-5" type="button">Submit</button>
   </div>
 </form>
 <script>
