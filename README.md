@@ -1,12 +1,12 @@
-<a name="br1"></a> 
+ *05\.604·Comerç Electrònic · PRÀCTICA 1 · 2023-2024*
+ 
+*Estudis d’Informàtica Multimèdia iTelecomunicació*
 
-05\.604·Comerç Electrònic · PRÀCTICA 1 · 2023-2024
+---
 
-Estudis d’Informàtica Multimèdia iTelecomunicació
+# Pràctica 1 de Comerç Electrònic
 
-Pràctica 1 de Comerç Electrònic
-
-Presentació
+## Presentació
 
 Aquesta Pràctica se centra en els conceptes apresos en els diferents mòduls de
 
@@ -18,69 +18,37 @@ Per dur-la a terme, cal treballar en un ordinador amb l'entorn d'Apache XAMPP,
 
 on es desplegarà la solució.
 
-Competències
+## Competències
 
-•
+- Capacitat de comunicació escrita en l'àmbit acadèmic i professional.
 
-•
+- Capacitat per adaptar-se a les tecnologies i als futurs entorns actualitzant les competències professionals.
 
-Capacitat de comunicació escrita en l'àmbit acadèmic i professional.
+- Capacitat per analitzar un problema en el nivell d'abstracció adequat a cada situació i aplicar les habilitats i coneixements adquirits per abordar-lo i resoldre'l.
 
-Capacitat per adaptar-se a les tecnologies i als futurs entorns
+- Capacitat per aplicar les tècniques específiques de tractament, emmagatzematge i administració de dades.
 
-actualitzant les competències professionals.
+- Capacitat per proposar i avaluar diferents alternatives tecnològiques per a resoldre un problema concret.
 
-•
+## Objectius
 
-Capacitat per analitzar un problema en el nivell d'abstracció
+- Creació d'una botiga online bàsica amb HTML, CSS, PHP i MySQL.
+  
 
-adequat a cada situació i aplicar les habilitats i coneixements
+## Recursos
 
-adquirits per abordar-lo i resoldre'l.
+### Bàsics
 
-•
-
-•
-
-Capacitat per aplicar les tècniques específiques de tractament,
-
-emmagatzematge i administració de dades.
-
-Capacitat per proposar i avaluar diferents alternatives tecnològiques
-
-per a resoldre un problema concret.
-
-Objectius
-
-Creació d'una botiga online bàsica amb HTML, CSS, PHP i MySQL.
-
-Recursos
-
-Bàsics
-
-•
-
-Mòdul “Desenvolupament i administració web amb bases de dades”.
-
-Complementaris
-
-https://www.php.net/manual/en/
-
-•
-
-Annexos 1, 2 i 3.
-
-1
+- Mòdul “Desenvolupament i administració web amb bases de dades”.
 
 
+### Complementaris
 
-<a name="br2"></a> 
+- https://www.php.net/manual/en/
 
-05\.604·Comerç Electrònic · PRÀCTICA 1 · 2023-2024
+- Annexos 1, 2 i 3.
 
-Estudis d’Informàtica Multimèdia iTelecomunicació
-
-Criteris d’avaluació
+## Criteris d’avaluació
 
 La pràctica té com a objectiu familiaritzar-se amb la programació web per crear una
 
@@ -88,21 +56,13 @@ botiga online amb els punts bàsics de tot comerç electrònic.
 
 Per importància de cara a la nota, es podria repartir de la següent manera:
 
-•
+- Realització del punt 1) i punt 2) de la pràctica (50%)
 
-•
+- Realització del punt 3) (20%)
 
-•
+- Realització del punt 4) (30%)
 
-•
-
-Realització del punt 1) i punt 2) de la pràctica (50%)
-
-Realització del punt 3) (20%)
-
-Realització del punt 4) (30%)
-
-Realització del punt 5) (opcional per pujar nota)
+- Realització del punt 5) (opcional per pujar nota)
 
 En l'avaluació no és estrictament necessari completar tots els punts per aprovar.
 
@@ -112,33 +72,24 @@ per poder fer amb èxit la resta dels punts. El punt 5 és opcional per a qui vu
 
 apujar nota i compensar altres apartats no realitzats o no completats.
 
-Format i data de lliurament
+## Format i data de lliurament
 
 La solució s'ha de lliurar en un arxiu comprimit .zip o .rar anomenat
 
-CognomsNom\_CE\_Practica1 que contindrà els diferents arxius de solució de
+**CognomsNom\_CE\_Practica1** que contindrà els diferents arxius de solució de
 
 la pràctica (arxius php, css, base de dades en format .sql, etc.) i un document
 
 PDF amb l'estat de la pràctica.
 
-El lliurament ha de ser com a màxim el dimarts 5 de desembre a les 23:59h, a
+El lliurament ha de ser com a màxim el **dimarts 5 de desembre a les 23:59h**, a
 
 la bústia de lliurament d'activitats de l'Aula Virtual de l'assignatura.
 
-2
 
+## Descripció de la pràctica a realitzar
 
-
-<a name="br3"></a> 
-
-05\.604·Comerç Electrònic · PRÀCTICA 1 · 2023-2024
-
-Estudis d’Informàtica Multimèdia iTelecomunicació
-
-Descripció de la pràctica a realitzar
-
-Enunciat
+### Enunciat
 
 En aquest document es fa una descripció de la pràctica 1 de l'assignatura de
 
@@ -148,7 +99,7 @@ virtual bàsica a partir de diferents punts i es basa en la teoria que s'ha vist
 
 mòdul "Gestió de la Informació" dels mòduls didàctics de l'assignatura.
 
-Introducció
+### Introducció
 
 Per desenvolupar la nostra botiga virtual necessitarem els següents elements
 
@@ -172,13 +123,13 @@ compatibilitat amb la pràctica 2. Per a això, es pot descarregar aquesta versi
 
 Consideracions generals:
 
-\- No es pot fer ús de CMS com PrestaShop, Woocommerce, Magento o similars.
+- No es pot fer ús de CMS com PrestaShop, Woocommerce, Magento o similars.
 
 Ha de ser una programació bàsica però feta des de zero mitjançant HTML/CSS i
 
 PHP.
 
-\- Es poden utilitzar frameworks de PHP tipus Laravel o Symfony, però no està
+- Es poden utilitzar frameworks de PHP tipus Laravel o Symfony, però no està
 
 dins de l'abast d'aquesta pràctica aprendre a usar-los.
 
@@ -198,17 +149,9 @@ En aquest apartat es descriuen els punts que conformen la pràctica.
 
 (opcional).
 
-3
 
 
-
-<a name="br4"></a> 
-
-05\.604·Comerç Electrònic · PRÀCTICA 1 · 2023-2024
-
-Estudis d’Informàtica Multimèdia iTelecomunicació
-
-Punt 1: disseny i implementació de la base de dades de la botiga.
+**Punt 1: disseny i implementació de la base de dades de la botiga.**
 
 S'hauran de crear les taules relacionals necessàries de la botiga online usant el
 
@@ -236,23 +179,14 @@ punt 2.2.1, encara que no cal implementar totes les opcions que apareixen com a
 
 estats de comanda, idiomes o facturació.
 
-4
 
-
-
-<a name="br5"></a> 
-
-05\.604·Comerç Electrònic · PRÀCTICA 1 · 2023-2024
-
-Estudis d’Informàtica Multimèdia iTelecomunicació
-
-Punt 2: creació de l’estructura bàsica en HTML/PHP de la botiga.
+**Punt 2: creació de l’estructura bàsica en HTML/PHP de la botiga.**
 
 Una estructura bàsica vàlida podria ser la següent (s'inclouen tots els punts demanats
 
 a la pràctica amb imatges orientatives del disseny bàsic de cada secció):
 
-Pàgina d'inici
+**Pàgina d'inici**
 
 Pàgina on es mostren les categories.
 
@@ -260,19 +194,7 @@ Per exemple, en una botiga de calçat, les categories podrien ser: botes, sabate
 
 sandàlies, etc.
 
-Exemple de pàgina d'inici
-
-5
-
-
-
-<a name="br6"></a> 
-
-05\.604·Comerç Electrònic · PRÀCTICA 1 · 2023-2024
-
-Estudis d’Informàtica Multimèdia iTelecomunicació
-
-Pàgina de categories
+**Pàgina de categories**
 
 Llistat dels productes d'aquesta categoria.
 
@@ -280,19 +202,8 @@ Aquestes categories i els seus productes associats s'han de carregar de la taula
 
 corresponent de la base de dades.
 
-Exemple de pàgina d’una categoria
 
-6
-
-
-
-<a name="br7"></a> 
-
-05\.604·Comerç Electrònic · PRÀCTICA 1 · 2023-2024
-
-Estudis d’Informàtica Multimèdia iTelecomunicació
-
-Pàgina de producte
+**Pàgina de producte**
 
 Informació del producte i opció d'afegir a la cistella de la compra.
 
@@ -300,63 +211,33 @@ La informació de cada producte s'ha de carregar de la taula corresponent de la 
 
 de dades.
 
-Exemple de pàgina d'un producte
 
-Web de la cistella
+
+**Web de la cistella**
 
 Es mostra el contingut de la cistella actual i es permet la compra. S'amplia informació
 
 al punt 3.
 
-Pàgina de compra
+**Pàgina de compra**
 
 Resum de la cistella i formulari per realitzar la comanda. S'amplia informació al punt 4.
 
-Pàgina d'administració (opcional)
+**Pàgina d'administració (opcional)**
 
 Visualització dels detalls de les comandes emmagatzemades. S'amplia informació al
 
 punt 5.
 
-7
+
+En aquests punts de creació de l’estructura bàsica de la botiga es poden desenvolupar les opcions de disseny de CSS i JavaScript que es consideri necessari per al codi.
+
+Es pot optar pel disseny que cada alumne i alumna decideixi fer a la seva botiga online sempre que es compleixi amb els requisits sol·licitats.
+
+Nota: en aquest punt es pot fer ús de qualsevol plantilla HTML + CSS existent o de la biblioteca Bootstrap per facilitar la feina.
 
 
-
-<a name="br8"></a> 
-
-05\.604·Comerç Electrònic · PRÀCTICA 1 · 2023-2024
-
-Estudis d’Informàtica Multimèdia iTelecomunicació
-
-En aquests punts de creació de l’estructura bàsica de la botiga es poden
-
-desenvolupar les opcions de disseny de CSS i JavaScript que es consideri necessari
-
-per al codi.
-
-Les imatges anteriors de cada secció són la versió bàsica i només serveixen
-
-per orientar.
-
-Es pot optar pel disseny que cada alumne i alumna decideixi fer a la seva
-
-botiga online sempre que es compleixi amb els requisits sol·licitats.
-
-Nota: en aquest punt es pot fer ús de qualsevol plantilla HTML + CSS existent o de la
-
-biblioteca Bootstrap per facilitar la feina.
-
-8
-
-
-
-<a name="br9"></a> 
-
-05\.604·Comerç Electrònic · PRÀCTICA 1 · 2023-2024
-
-Estudis d’Informàtica Multimèdia iTelecomunicació
-
-Punt 3: gestió de la cistella.
+**Punt 3: gestió de la cistella.**
 
 Creació de la lògica en PHP necessària per a la gestió d'una cistella de la compra
 
@@ -366,19 +247,9 @@ Com a punts a desenvolupar de cara a obtenir una major nota, es pot considerar l
 
 realització de les següents característiques:
 
-•
+- Accés a la cistella des de totes les pàgines de la botiga online.
 
-•
-
-Accés a la cistella des de totes les pàgines de la botiga online.
-
-Gestió de les quantitats d'un mateix producte: si s'afegeix diverses vegades
-
-el mateix producte, el sistema podria recalcular la quantitat d'aquest producte
-
-en lloc d'afegir-lo unitàriament.
-
-•
+- Gestió de les quantitats d'un mateix producte: si s'afegeix diverses vegades el mateix producte, el sistema podria recalcular la quantitat d'aquest producte en lloc d'afegir-lo unitàriament.
 
 Opció d'eliminar productes de la cistella carret.
 
@@ -394,21 +265,8 @@ A l'annex 3 també trobareu enllaços d'interès per resoldre les parts més com
 
 de la botiga.
 
-A continuació, es mostra una imatge orientativa del que podria ser la implementació
 
-de la cistella:
-
-9
-
-
-
-<a name="br10"></a> 
-
-05\.604·Comerç Electrònic · PRÀCTICA 1 · 2023-2024
-
-Estudis d’Informàtica Multimèdia iTelecomunicació
-
-Punt 4: gestió del procés de compra online.
+**Punt 4: gestió del procés de compra online.**
 
 Es demana realitzar una compra en línia dels productes de la botiga, quedant el
 
@@ -426,18 +284,6 @@ Per a un usuari convidat n'hi hauria prou amb indicar el correu electrònic i l'
 
 d'enviament.
 
-Exemple de selecció entre usuari registrat i convidat.
-
-1
-
-
-
-<a name="br11"></a> 
-
-05\.604·Comerç Electrònic · PRÀCTICA 1 · 2023-2024
-
-Estudis d’Informàtica Multimèdia iTelecomunicació
-
 Un cop seleccionat el tipus de procés, es demana mostrar un breu resum de les
 
 dades introduïdes i els productes escollits per confirmar la comanda.
@@ -454,19 +300,9 @@ informació de la compra tant per a un usuari registrat com per a un usuari conv
 
 seria suficient.
 
-1
+**Punt 5 (opcional): creació d’un panell d’administració per a consulta de
 
-
-
-<a name="br12"></a> 
-
-05\.604·Comerç Electrònic · PRÀCTICA 1 · 2023-2024
-
-Estudis d’Informàtica Multimèdia iTelecomunicació
-
-Punt 5 (opcional): creació d’un panell d’administració per a consulta de
-
-comandes.
+comandes.**
 
 Creació d'un panell bàsic d'administració amb accés mitjançant usuari i
 
@@ -488,45 +324,21 @@ Exemple de llistat amb les comandes de la botiga.
 
 Exemple de detalls de comanda.
 
-1
 
 
-
-<a name="br13"></a> 
-
-05\.604·Comerç Electrònic · PRÀCTICA 1 · 2023-2024
-
-Estudis d’Informàtica Multimèdia iTelecomunicació
-
-Documentació de la pràctica:
+**Documentació de la pràctica:**
 
 Cal enviar un document on expliqui l'estat de la pràctica amb el següent
 
 contingut:
 
-•
+- Índex amb els diferents apartats o punts que s'han realitzat de la pràctica.
 
-•
+- Codi font de l'aplicació web comprimida en format ZIP o RAR perquè el docent pugui comprovar el funcionament bàsic de l'aplicació:
+  - Arxius PHP
+  - Base de dades (estructura i dades) en format .sql
+  - Altres arxius: .css, .js, imatges, etc.
 
-Índex amb els diferents apartats o punts que s'han realitzat de la pràctica.
-
-Codi font de l'aplicació web comprimida en format ZIP o RAR perquè el
-
-docent pugui comprovar el funcionament bàsic de l'aplicació:
-
-.
-
-.
-
-.
-
-Arxius PHP
-
-Base de dades (estructura i dades) en format .sql
-
-Altres arxius: .css, .js, imatges, etc.
-
-•
 
 Per cada punt o apartat en els que està dividida la pràctica, captura de
 
@@ -546,23 +358,8 @@ Valoració personal de la pràctica: Com us ha anat? Què heu trobat més
 
 difícil? Què ha estat el més interessant? Suggeriments, comentaris, etc.
 
-•
 
-•
-
-•
-
-1
-
-
-
-<a name="br14"></a> 
-
-05\.604·Comerç Electrònic · PRÀCTICA 1 · 2023-2024
-
-Estudis d’Informàtica Multimèdia iTelecomunicació
-
-ANNEX 1. Ús de variables $\_SESSION
+### ANNEX 1. Ús de variables $\_SESSION
 
 Les sessions són una forma senzilla d'emmagatzemar dades de manera individualitzada
 
@@ -574,7 +371,7 @@ per al nostre cas en concret, gestionar una cistella.
 
 Exemple #1 Registrar una variable $\_SESSION
 
-<?php
+```<?php
 
 session\_start();
 
@@ -595,9 +392,9 @@ foreach($\_SESSION['carro'] as $producto) {
 }
 
 ?>
-
+```
 Exemple #3 Deregistrar una variable $\_SESSION
-
+```
 <?php
 
 session\_start();
@@ -606,17 +403,9 @@ unset($\_SESSION['carro']);
 
 ?>
 
-1
+```
 
-
-
-<a name="br15"></a> 
-
-05\.604·Comerç Electrònic · PRÀCTICA 1 · 2023-2024
-
-Estudis d’Informàtica Multimèdia iTelecomunicació
-
-ANNEX 2. Ús de variables $\_COOKIE
+**ANNEX 2. Ús de variables $\_COOKIE**
 
 Les cookies (galetes) són un mecanisme que permet emmagatzemar dades en el
 
@@ -633,7 +422,7 @@ les operacions necessàries i després actualitzar-la de nou (Exemple 1).
 A continuació, es mostren les operacions més habituals:
 
 Exemple #1 Registrar una variable $\_COOKIE
-
+```
 <?php
 
 $carrito = array();
@@ -643,9 +432,9 @@ $tiempo = time() + (60 \* 60);
 setcookie('carro', serialize($carrito), $tiempo);
 
 ?>
-
+```
 Exemple #2 Recuperar valors d’una variable $\_ COOKIE
-
+```
 <?php
 
 $carrito = unserialize($\_COOKIE['carro']);
@@ -657,24 +446,15 @@ foreach($carrito as $clave => $valor) {
 }
 
 ?>
-
+```
 Exemple #3 Deregistrar una variable $\_ COOKIE
-
+```
 <?php
 
 unset($\_COOKIE['carro']);
 
 ?>
-
-1
-
-
-
-<a name="br16"></a> 
-
-05\.604·Comerç Electrònic · PRÀCTICA 1 · 2023-2024
-
-Estudis d’Informàtica Multimèdia iTelecomunicació
+```
 
 ANNEX 3. Enllaços d’interès.
 
@@ -693,6 +473,4 @@ https://www.php.net/manual/en/reserved.variables.post.php
 \- Gestió de variables GET i POST amb formularis (anglès):
 
 https://www.php.net/manual/en/language.variables.external.php
-
-1
 
