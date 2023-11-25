@@ -1,37 +1,40 @@
 <?php
-	include_once 'db/Database.php';
-	include_once 'model/CategoryDAO.php';
+// Autoloading
+spl_autoload_register(function ($className) {
+    $className = str_replace("\\", DIRECTORY_SEPARATOR, $className);
+    $file = __DIR__ . DIRECTORY_SEPARATOR . $className . '.php';
+    if (file_exists($file)) {
+        include $file;
+    }
+});
 
-	$categories = CategoryDAO::getAllCategories();
-	$content = '<div class="landing">';
-	foreach ($categories as $category) {
-		$content .= '<div class="card">
-		<img src="img/categories/'. $category->getImage() .'" alt="'. $category->getName() .'">
-		<a href="category.php?category_id=' . $category->getId() . '">' . $category->getName() . '</a>
-		</div>';
-	}
-	$content .= '</div>';
-	$title = 'Shoes Store';
-	ob_start();
-	include 'layout.php';
-	$layout = ob_get_clean();
-  	echo $layout;
-?>
-<style>
-.landing {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	width: 50%;
-	margin: 0 auto;
+$path = !empty($_GET['url']) ? $_GET['url'] : 'home';
+$path = explode('/', filter_var(rtrim($path, '/'), FILTER_SANITIZE_URL));
+$controller = $path[0];
+$controller = ucfirst($controller) . 'Controller';
+$controller = "controllers\\$controller";
+
+if (isset($path[1]) && is_numeric($path[1])) {
+    $action = 'index';
+    $param = $path[1];
+} else {
+    $action = $path[1] ?? 'index';
+    $param = $path[2] ?? null;
 }
-.landing .card {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-	gap: 50px;
-	text-transform: capitalize;
+
+// echo "Controller: $controller<br>";
+// echo "Action: $action<br>";
+// echo "Param: $param<br>";
+
+if (class_exists($controller)) {
+    $controllerInstance = new $controller();
+    if (method_exists($controllerInstance, $action)) {
+        $controllerInstance->$action($param);
+    } else {
+        // Manejar como error 404, acción no encontrada
+        echo "Método no encontrado";
+    }
+} else {
+    // Manejar como error 404, controlador no encontrado
+    echo "Controller no encontrado";
 }
-</style>
